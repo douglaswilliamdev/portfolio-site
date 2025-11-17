@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --font-headline: 'Mozilla Headline', sans-serif;
+  --font-nova: 'Press Start 2P', sans-serif;
+  --color-yellow: #d6cf19;
+}
+
+/* ---------- base ---------- */
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: #111;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+}
+
+/* garante que imagens nunca “estourem” a tela */
+img,video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- navbar ---------- */
+.navbar {
+  font-family: var(--font-headline);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #000;
+}
+
+.navbar img {
+  width: 150px;
+  height: auto;
+}
+
+.navbar a {
+  margin-left: 1rem;
+  color: #fff;
+  text-decoration: none;
+  transition: color .3s;
+}
+
+.navbar a:hover {
+  color: var(--color-yellow);
+}
+
+/* quebra para coluna no mobile */
+@media (max-width:768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar img {
+    max-width: 120px;
+    margin-bottom: 1rem;
+  }
+
+  .navbar nav a {
+    display: inline-block;
+    margin: .5rem;
+  }
+}
+
+/* ---------- hero ---------- */
+.hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  background: #1a1718;
+  padding: 3rem 2rem;
+}
+
+.emoji {
+  font-size: 7rem;
+  font-family: var(--font-nova);
+  color: var(--color-yellow);
+}
+
+.emoji::before {
+  content: ":D";
+}
+
+.emoji:hover::before {
+  content: ":P";
+}
+
+.intro {
+  max-width: 600px;
+}
+
+.highlight {
+  color: var(--color-yellow);
+  font-weight: bold;
+  font-family: var(--font-nova);
+}
+
+.highlight span {
+  text-transform: lowercase;
+  font-weight: 900;
+}
+
+.yellow {
+  color: var(--color-yellow);
+  font-weight: bold;
+}
+
+/* hero responsivo */
+@media(max-width:768px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .emoji {
+    font-size: 5rem;
+  }
+
+  .intro {
+    max-width: 90%;
+  }
+}
+
+/* ---------- portfolio ---------- */
+/* grid automático substitui flex */
+/* Layout de portfólio vertical — uma imagem por linha */
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.portfolio .item {
+  width: 100%;
+}
+
+.portfolio img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+.portfolio .item {
+  position: relative;
+}
+
+.portfolio img {
+  border-radius: 8px;
+}
+
+.portfolio .tag {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: yellow;
+  color: #000;
+  font-weight: bold;
+  padding: .3rem .6rem;
+  border-radius: 4px;
+  text-align: right;
+}
+
+/* ---------- worked with ---------- */
+.worked {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: #f1f1f1;
+  color: #111;
+}
+
+.worked h3 {
+  font-family: var(--font-headline);
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.logos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.logos img {
+  filter: grayscale(100%);
+  opacity: .8;
+  transition: all .3s;
+}
+
+.logos img:hover {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+/* ---------- about ---------- */
+
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  background: #000;
+  /* fundo preto */
+  color: #fff;
+  padding: 3rem 2rem;
+  font-family: var(--font-headline);
+}
+
+.about-img img {
+  width: 260px;
+  border: 3px solid var(--color-yellow);
+  /* borda amarela */
+  border-radius: 4px;
+  clip-path: polygon(5% 0, 95% 0, 100% 5%, 100% 95%, 95% 100%, 5% 100%, 0 95%, 0 5%);
+  transition: transform 0.3s ease;
+}
+
+.about-img img:hover {
+  transform: scale(1.05);
+  /* leve zoom ao passar o mouse */
+}
+
+.about-text {
+  max-width: 480px;
+}
+
+.about-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.about-text .yellow {
+  color: var(--color-yellow);
+}
+
+.about-text p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-family: Arial, sans-serif;
+}
+
+/* botão igual à imagem */
+.btn {
+  display: inline-block;
+  background: var(--color-yellow);
+  color: #000;
+  font-weight: bold;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: var(--font-nova);
+  font-size: 0.8rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background: #f0e40093;
+  transform: translateY(-2px);
+}
+
+/* Responsividade: imagem acima do texto no mobile */
+@media (max-width: 768px) {
+  .about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-img img {
+    width: 80%;
+  }
+
+  .about-text {
+    max-width: 90%;
+  }
+}
+
+.btn {
+  display: inline-block;
+  background: var(--color-yellow);
+  color: #000;
+  font-weight: bold;
+  padding: .6rem 1.2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background .3s;
+}
+
+.btn:hover {
+  background: #f0e40093;
+}
+
+@media(max-width:768px) {
+  .about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text {
+    max-width: 90%;
+  }
+}
+
+/* ----------------------------------------------------
+   FOOTER
+---------------------------------------------------- */
+
+.footer {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  font-family: var(--font-headline);
+  font-size: .9rem;
+  margin-top: auto;
+}
+
+/* -----------------------------------------------
+   Troca de imagem (hover) usando JavaScript
+------------------------------------------------ */
+img[data-hover] {
+  transition: opacity .3s ease;
+}
+
