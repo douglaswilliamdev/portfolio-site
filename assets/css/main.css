@@ -1,13 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+html, body {
+  overflow-x: hidden;
+}
+
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 :root {
   --font-headline: 'Mozilla Headline', sans-serif;
   --font-nova: 'Press Start 2P', sans-serif;
   --color-yellow: #d6cf19;
 }
 
-/* ---------- base ---------- */
+/*  base  */
 body {
   display: flex;
   flex-direction: column;
@@ -24,23 +33,76 @@ img,video {
   height: auto;
 }
 
-/* ---------- navbar ---------- */
+/* Menu hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* Transformação quando ativo */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* esconder o nav no mobile */
+@media (max-width: 768px) {
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar nav {
+    position: absolute;
+    top: 70px;
+    right: 15px;
+    background: #000;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .navbar nav.active {
+    display: flex;
+  }
+}
+
 .navbar {
   font-family: var(--font-headline);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 15rem;
+  padding: 1rem 1.5rem;
   background: #000;
 }
 
 .navbar img {
-  width: 150px;
-  height: auto;
+  width: 110px;
+  margin-bottom: 1rem;
 }
 
 .navbar a {
-  margin-left: 1rem;
+  margin: .5rem;
+  font-size: 1.1rem;
   color: #fff;
   text-decoration: none;
   transition: color .3s;
@@ -50,33 +112,15 @@ img,video {
   color: var(--color-yellow);
 }
 
-/* quebra para coluna no mobile */
-@media (max-width:768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-
-  }
-
-  .navbar img {
-    max-width: 120px;
-    margin-bottom: 1rem;
-  }
-
-  .navbar nav a {
-    display: inline-block;
-    margin: .5rem;
-  }
-}
-
-/* ---------- hero ---------- */
+/* hero */
 .hero {
   font-family: var(--font-headline);
   display: flex;
   justify-content: center;
-  gap: 10rem;
+  gap: 2rem;
   background: #1a1718;
-  padding: 3rem 2rem;
+  padding: 2rem 1rem;
+  text-align: center;
 }
 
 .emoji {
@@ -126,18 +170,17 @@ img,video {
   }
 
   .intro {
-    max-width: 90%;
+    max-width: 95%;
   }
 }
 
-/* ---------- portfolio ---------- */
-/* grid automático substitui flex */
-/* Layout de portfólio vertical — uma imagem por linha */
+/* portfolio */
+
 .portfolio {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 10rem;
+  gap: 2rem;
+  padding: 2rem 1rem;
 }
 
 .portfolio .item {
@@ -154,10 +197,6 @@ img,video {
   position: relative;
 }
 
-.portfolio img {
-  border-radius: 8px;
-}
-
 .portfolio .tag {
   position: absolute;
   bottom: 10px;
@@ -170,7 +209,7 @@ img,video {
   text-align: right;
 }
 
-/* ---------- worked with ---------- */
+/* worked with */
 .worked {
   text-align: center;
   padding: 3rem 2rem;
@@ -205,7 +244,7 @@ img,video {
   opacity: 1;
 }
 
-/* ---------- about ---------- */
+/* about */
 
 .about {
   display: flex;
@@ -252,7 +291,7 @@ img,video {
   font-family: Arial, sans-serif;
 }
 
-/* botão igual à imagem */
+/* botão igual a imagem */
 .btn {
   display: inline-block;
   background: var(--color-yellow);
@@ -313,9 +352,7 @@ img,video {
   }
 }
 
-/* ----------------------------------------------------
-   FOOTER
----------------------------------------------------- */
+/* footer */
 
 .footer {
   background: #000;
@@ -327,10 +364,7 @@ img,video {
   margin-top: auto;
 }
 
-/* -----------------------------------------------
-   Troca de imagem (hover) usando JavaScript
------------------------------------------------- */
+/* Troca de imagem usando JavaScript (hover) */
 img[data-hover] {
   transition: opacity .3s ease;
 }
-

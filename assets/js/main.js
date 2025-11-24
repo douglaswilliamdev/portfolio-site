@@ -6,4 +6,12 @@ document.querySelectorAll("img[data-hover]").forEach(img => {
 
   img.addEventListener("mouseenter", () => { img.src = hover; });
   img.addEventListener("mouseleave", () => { img.src = original; });
+}); 
+
+const hamburger = document.querySelector(".hamburger");
+const nav = document.querySelector(".navbar nav");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  nav.classList.toggle("active");
 });

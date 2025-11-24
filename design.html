@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>// Design</title>
-  <link rel="stylesheet" href="assets/css/main.css"> 
+  <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/pages.css">
 </head>
+
 <body>
   <header class="navbar">
     <a href="index.html">
-    <img src="assets/images/FellypeLogo.svg" alt="Fellype">
+      <img src="assets/images/FellypeLogo.svg" alt="Fellype">
     </a>
+
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    
     <nav>
       <a href="index.html">home</a>
       <a href="art-direction.html">art direction</a>
@@ -25,7 +35,7 @@
     <h1>//design</h1>
   </section>
 
-<section class="gallery">
+  <section class="gallery">
 
     <!-- FOTOGRAFIA 1 -->
     <div class="gallery-item">
@@ -76,102 +86,31 @@
     </div>
   </section>
 
-    <div class="reset-container">
-            <button id="resetGallery">Resetar Galeria</button>
-    </div> 
+  <div class="reset-container">
+    <button id="resetGallery">Resetar Galeria</button>
+  </div>
 
-    <!-- MODEL PREMIUM -->
-<div class="model-overlay" id="modelReset">
-  <div class="model-box">
-    <h2>Resetar Galeria?</h2>
-    <p>Isso irá remover todas as imagens personalizadas desta página.</p>
+  <!-- MODEL PREMIUM -->
+  <div class="model-overlay" id="modelReset">
+    <div class="model-box">
+      <h2>Resetar Galeria?</h2>
+      <p>Isso irá remover todas as imagens personalizadas desta página.</p>
 
-    <div class="model-actions">
-      <button id="confirmReset" class="btn-confirm">Sim, resetar</button>
-      <button id="cancelReset" class="btn-cancel">Cancelar</button>
+      <div class="model-actions">
+        <button id="confirmReset" class="btn-confirm">Sim, resetar</button>
+        <button id="cancelReset" class="btn-cancel">Cancelar</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Mensagem de OK -->
-<div class="toast" id="toastMsg">Galeria restaurada!</div>
+  <!-- Mensagem de OK -->
+  <div class="toast" id="toastMsg">Galeria restaurada!</div>
 
   <footer class="footer">
     <p>© 2025 Fellype | Feito com ❤</p>
   </footer>
-
-<script>
-  // Seleciona todos os itens da galeria
-  const galleryItems = document.querySelectorAll('.gallery-item');
-
-  galleryItems.forEach((item, index) => {
-    const img = item.querySelector('img');
-    const input = item.querySelector('.image-input');
-
-    // --- 1. AO CARREGAR A PÁGINA, VERIFICA SE TEM IMAGEM SALVA NO LOCALSTORAGE ---
-    const savedImage = localStorage.getItem(`galleryImage_${index}`);
-    if (savedImage) {
-      img.src = savedImage;
-      img.style.filter = "grayscale(0%)";
-    }
-
-    // --- 2. ABRE O SELECTOR DE IMAGEM QUANDO CLICA NA FOTO ---
-    img.addEventListener('click', () => input.click());
-
-    // --- 3. QUANDO O USUÁRIO ESCOLHE UMA NOVA IMAGEM ---
-    input.addEventListener('change', event => {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-
-        reader.onload = e => {
-          const imageData = e.target.result;
-
-          // Atualiza a imagem na tela
-          img.src = imageData;
-          img.style.filter = "grayscale(0%)";
-
-          // --- 4. SALVA NO LOCALSTORAGE ---
-          localStorage.setItem(`galleryImage_${index}`, imageData);
-        };
-
-        reader.readAsDataURL(file); // Converte para Base64
-      }
-    });
-  }); 
-
-  // ABRIR MODEL
-document.getElementById("resetGallery").addEventListener("click", () => {
-  document.getElementById("modelReset").style.display = "flex";
-});
-
-// CANCELAR MODEL
-document.getElementById("cancelReset").addEventListener("click", () => {
-  document.getElementById("modelReset").style.display = "none";
-});
-
-// CONFIRMAR RESET
-document.getElementById("confirmReset").addEventListener("click", () => {
-
-  let prefix = "galleryImage_"; // Art Direction
-
-  // Apaga as imagens desta página
-  const keys = Object.keys(localStorage).filter(k => k.startsWith(prefix));
-  keys.forEach(k => localStorage.removeItem(k));
-
-  // Fecha model
-  document.getElementById("modelReset").style.display = "none";
-
-  // Mostra toast
-  const toast = document.getElementById("toastMsg");
-  toast.style.display = "block";
-
-  // Reload suave
-  setTimeout(() => {
-    toast.style.display = "none";
-    location.reload();
-  }, 2000);
-});
-</script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
+
 </html>

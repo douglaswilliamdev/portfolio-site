@@ -12,8 +12,15 @@
 <body>
   <header class="navbar">
     <a href="index.html">
-    <img src="assets/images/FellypeLogo.svg" alt="Fellype">
+      <img src="assets/images/FellypeLogo.svg" alt="Fellype">
     </a>
+
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
     <nav>
       <a href="index.html">home</a>
       <a href="art-direction.html">art direction</a>
@@ -78,29 +85,31 @@
     </div>
   </section>
 
-    <div class="reset-container">
-      <button id="resetGallery">Resetar Galeria</button>
-    </div>
+  <div class="reset-container">
+    <button id="resetGallery">Resetar Galeria</button>
+  </div>
 
-    <!-- MODEL -->
-    <div class="model-overlay" id="modelReset">
-      <div class="model-box">
-        <h2>Resetar Galeria?</h2>
-        <p>Isso irá remover todas as imagens personalizadas desta página.</p>
+  <!-- MODEL -->
+  <div class="model-overlay" id="modelReset">
+    <div class="model-box">
+      <h2>Resetar Galeria?</h2>
+      <p>Isso irá remover todas as imagens personalizadas desta página.</p>
 
-        <div class="model-actions">
-          <button id="confirmReset" class="btn-confirm">Sim, resetar</button>
-          <button id="cancelReset" class="btn-cancel">Cancelar</button>
-        </div>
+      <div class="model-actions">
+        <button id="confirmReset" class="btn-confirm">Sim, resetar</button>
+        <button id="cancelReset" class="btn-cancel">Cancelar</button>
       </div>
     </div>
+  </div>
 
-    <!-- Mensagem de OK -->
-    <div class="toast" id="toastMsg">Galeria restaurada!</div> 
+  <!-- Mensagem de OK -->
+  <div class="toast" id="toastMsg">Galeria restaurada!</div>
 
   <footer class="footer">
     <p>© 2025 Fellype | Feito com ❤</p>
   </footer>
   <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
+
 </html>
