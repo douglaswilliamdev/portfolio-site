@@ -21,7 +21,7 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0;
-  background: #111;
+  background: #1a1718;
   color: #fff;
   font-family: Arial, sans-serif;
   min-height: 100vh;
@@ -73,7 +73,7 @@ img,video {
     position: absolute;
     top: 70px;
     right: 15px;
-    background: #000;
+    background: #1a1718;
     padding: 1rem 2rem;
     border-radius: 6px;
     display: none;
@@ -92,7 +92,7 @@ img,video {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.5rem;
-  background: #000;
+  background: #1a1718;
 }
 
 .navbar img {
@@ -257,7 +257,7 @@ img,video {
   align-items: center;
   justify-content: center;
   gap: 3rem;
-  background: #000;
+  background: #1a1718;
   /* fundo preto */
   color: #fff;
   padding: 3rem 2rem;
